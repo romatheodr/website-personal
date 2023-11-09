@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeAPP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F8FF;
+        }
+
+        #textArea {
+            width: 355px;
+            height: 100px;
+            font-size: 13px;
+        }
+
+        #secretKey {
+            width: 190px;
+            height: 25px;
+            font-size: 18px;
+        }
+
+        #encryptBtn,
+        #decryptBtn,
+        #resetBtn {
+            height: 40px;
+            width: 190px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #encryptBtn {
+            background-color: #87CEEB;
+            color: white;
+        }
+
+        #decryptBtn {
+            background-color: #DDA0DD;
+            color: white;
+        }
+
+        #resetBtn {
+            background-color: #DB7093;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="textArea">Enter text for encryption and decryption</label><br>
+        <textarea id="textArea"></textarea>
+    </div>
+    <div>
+        <label for="secretKey">Enter secret key for encryption and decryption</label><br>
+        <input type="password" id="secretKey">
+    </div>
+    <button id="encryptBtn" onclick="encrypt()">ENCRYPT TEXT</button>
+    <button id="decryptBtn" onclick="decrypt()">DECRYPT TEXT</button>
+    <button id="resetBtn" onclick="reset()">RESET</button>
+
+    <script>
+        function encrypt() {
+            var password = document.getElementById("secretKey").value;
+
+            if (password === "9876") {
+                var message = document.getElementById("textArea").value;
+                var encodeMessage = btoa(message);
+
+                alert("ENCRYPT:\n" + encodeMessage);
+            } else if (password !== "") {
+                alert("Input Password");
+            } else if (password !== "9876") {
+                alert("Invalid Password");
+            }
+        }
+
+        function decrypt() {
+            var password = document.getElementById("secretKey").value;
+
+            if (password === "9876") {
+                var message = document.getElementById("textArea").value;
+                var decodeMessage = atob(message);
+
+                alert("DECRYPT:\n" + decodeMessage);
+            } else if (password !== "") {
+                alert("Input Password");
+            } else if (password !== "9876") {
+                alert("Invalid Password");
+            }
+        }
+
+        function reset() {
+            document.getElementById("secretKey").value = "";
+            document.getElementById("textArea").value = "";
+        }
+    </script>
+</body>
+</html>
+
+
